@@ -21,7 +21,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useStorage } from 'pinia';
 
 const inputText = ref(''); // Define a ref for input text
 const addedItems = ref([]); // Define a ref for added items
