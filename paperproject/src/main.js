@@ -26,6 +26,10 @@ app.use(router);
 app.use(pinia);
 app.use(vuetify);
 
+import {notitieStore} from '@/stores/notitieStore'
+const store = notitieStore();
+await store.retrieveAllNotes();
+
 //registerPlugins(app)
 
 app.mount('#app')

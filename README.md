@@ -4,10 +4,22 @@
 
 set flag **chrome://flags/#allow-insecure-localhost**
 
-install hotel: https://github.com/typicode/hotel?tab=readme-ov-file
+install npm packages in ./backend 
+install Caddy
+eddit /etc/hosts
+run caddy run in ./backend
+see https://json-server.dev/json-server-https/
 
-```bash
-hotel add "node server.js" --name backend
-```
+## starting frontend
 
-ga naar localhost:2000 start backend
+start backend first 
+sudo apt-get install npm 
+sudo npm i
+bij errors 
+sudo npm cache clean -f
+sudo rm -rf node_moduals
+sudo rm -rf packages-lock.json
+
+### start
+sudo npm run dev
+
