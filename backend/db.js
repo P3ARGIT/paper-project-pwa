@@ -6,7 +6,7 @@ var firstRoute  = require('./data/data.json');
 
 module.exports = function() {
 return {
-firstRoute  : firstRoute,
+notes  : firstRoute,
 // secondRoute : secondRoute,
 // thirdRoute  : thirdRoute, 
 // fourthRoute : fourthRoute

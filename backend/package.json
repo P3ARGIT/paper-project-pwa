@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "main": "db.js",
   "devDependencies": {
-    "json-server": "^1.0.0-alpha.23"
+    "json-server": "^0.17.4"
   },
   "keywords": [],
   "author": "",
