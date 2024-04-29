@@ -6,11 +6,17 @@
 
 // Composables
 import { createRouter, createWebHistory } from 'vue-router/auto'
-import { setupLayouts } from 'virtual:generated-layouts'
+import NoteApp from '@/components/NoteApp.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  extendRoutes: setupLayouts,
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: NoteApp
+    },]
 })
 
 export default router
