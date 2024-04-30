@@ -3,7 +3,7 @@ import axios from 'axios'
 
 //let url = 'http://localhost:8081'
 let url = 'https://backend.localhost'
-export const notitieStore = defineStore('paardenfokkerij', {
+export const notitieStore = defineStore('notitieStore', {
   state: () => ({
     notes: [{ "id":0, "noteContent": "test"}, { "id":2, "noteContent": "test2"}],
     error: ''
