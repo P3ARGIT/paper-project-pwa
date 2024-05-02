@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import { th } from 'vuetify/locale';
 
 let url = 'http://localhost:8000'
 //let url = 'https://backend.localhost'
 export const notitieStore = defineStore('notitieStore', {
   state: () => ({
-    notes: [{ "id":0, "noteContent": "test"}, { "id":2, "noteContent": "test2"}],
+    notes: [{}, {}],
     error: ''
   }),
   actions: {
@@ -15,9 +16,7 @@ export const notitieStore = defineStore('notitieStore', {
         "id" : id,
         "content": content
       }
-      //console.log(newNote);
-      //console.log(typeof this.notes)
-      this.notes.push(newNote);
+      this.notes.notes.push(newNote);
       await axios.post(`${url}/notes`,this.notes)
       await this.retrieveAllNotes()
 
@@ -25,14 +24,25 @@ export const notitieStore = defineStore('notitieStore', {
     async retrieveAllNotes() {
       const response = await axios.get(`${url}/notes`)
       this.notes = response.data
-      //console.log(this.notes.notes)
     },
     async deleteNote(id){
-      for (let i =0; i < this.notes.length; i++){
-        if(this.notes[i].id == id){
-          this.notes.pop(i);
+      console.log(id)
+      
+      this.notes.notes.forEach(
+        (note) =>{
+        if(note.id == id){
+          //index = this.notes.notes.indexOf(note)
+          //this.notes.notes.pop(note);
+          this.notes.notes.splice(this.notes.notes.indexOf(note),1)
         }
-      }
+        }
+      )
+      // for (let i =0; i < this.notes.length; i++){
+      //   console.log(this.notes)
+      //   if(this.notes.notes[i].id == id){
+      //     this.notes.pop(i);
+      //   }
+      // }
       await axios.post(`${url}/notes`,this.notes)
       this.retrieveAllNotes();
 
