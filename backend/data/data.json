@@ -1,5 +1,6 @@
 {
 "notes":[
-
+    { "id":0, "noteContent": "test"},
+    { "id":1, "noteContent": "test2"}
 ]
 }

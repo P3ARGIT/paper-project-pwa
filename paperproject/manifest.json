@@ -1,0 +1,31 @@
+{
+    "name": "NoteApp",
+    "short_name": "notes",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "A Note app",
+    "icons": [
+      {
+        "src": "src/assets/note64",
+        "sizes": "64x64",
+        "type": "image/png"
+      },
+      {
+        "src": "src/assets/note128",
+        "sizes": "128x128",
+        "type": "image/png"
+      },
+      {
+        "src": "src/assets/note256",
+        "sizes": "256x256",
+        "type": "image/png"
+      },
+      {
+        "src": "src/assets/note512",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  

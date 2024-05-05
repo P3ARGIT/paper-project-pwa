@@ -16,7 +16,7 @@
   </v-container>
 
   <v-container>
-  <div v-for="i in store.notes" :key="i">
+  <div v-for="i in store.notes.notes" :key="i.id">
   <v-card class="ma-2" height="200px" >
     <v-btn @click="deleteNote(i.id)">delete</v-btn>
     <p>{{i.content}}</p>
