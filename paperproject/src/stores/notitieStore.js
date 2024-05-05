@@ -1,4 +1,3 @@
-import { defineStore } from 'pinia'
 import axios from 'axios'
 import { th } from 'vuetify/locale';
 
@@ -31,18 +30,10 @@ export const notitieStore = defineStore('notitieStore', {
       this.notes.notes.forEach(
         (note) =>{
         if(note.id == id){
-          //index = this.notes.notes.indexOf(note)
-          //this.notes.notes.pop(note);
           this.notes.notes.splice(this.notes.notes.indexOf(note),1)
         }
         }
       )
-      // for (let i =0; i < this.notes.length; i++){
-      //   console.log(this.notes)
-      //   if(this.notes.notes[i].id == id){
-      //     this.notes.pop(i);
-      //   }
-      // }
       await axios.post(`${url}/notes`,this.notes)
       this.retrieveAllNotes();
 
