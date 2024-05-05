@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-let url = 'http://localhost:8000'
+let url = 'http://192.168.0.181:8000'
 //let url = 'https://backend.localhost'
 export const notitieStore = defineStore('notitieStore', {
   state: () => ({
