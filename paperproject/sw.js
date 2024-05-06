@@ -5,44 +5,31 @@
 // Here comes the install event!
 // This only happens once, when the browser sees this
 // version of the ServiceWorker for the first time.
+
 let notes;
-self.addEventListener('install', function(event) {
-  // We pass a promise to event.waitUntil to signal how
-  // long install takes, and if it failed
-  event.waitUntil(
-    // We open a cache…
-    caches.open('simple-sw-v1').then(function(cache) {
-      // And add resources to it
-      return cache.addAll([
-        './',
-        'style.css',
-        'logging.js'
-      ]);
-    })
-  );
-});
+self.addEventListener('fetch', function (event) {
+  if(/notes/.test(event.request.url)){
+    if(event.request.method == "GET"){
+      return new Response(notes);
+    }if(event.request.method == "POST"){
+      notes = event.request;
+      new Response();
+    }
 
-// The fetch event happens for the page request with the
-// ServiceWorker's scope, and any request made within that
-// page
-self.addEventListener('fetch', function(event) {
-  if (/notes/.test(event.request.url)) {
-    console.log(event.request.method == "GET")
-    //event.respondWith(fetch('trollface.svg'));
-    //return;
+  }else{
+    event.respondWith(
+      caches.open('test').then(function (cache) {
+        return cache.match(event.request).then(function (response) {
+          var fetchPromise = fetch(event.request).then(function (networkResponse) {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          });
+          return response || fetchPromise;
+        });
+      }),
+    );
   }
-  // Calling event.respondWith means we're in charge
-  // of providing the response. We pass in a promise
-  // that resolves with a response object
-  event.respondWith(
-
-    // First we look for something in the caches that
-    // matches the request
-    caches.match(event.request).then(function(response) {
-      // If we get something, we return it, otherwise
-      // it's null, and we'll pass the request to
-      // fetch, which will use the network.
-      return response || fetch(event.request);
-    })
-  );
 });
+
+
+

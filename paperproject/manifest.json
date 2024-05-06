@@ -7,7 +7,7 @@
     "description": "A Note app",
     "icons": [
       {
-	"src": "http://192.168.0.181:8000/note512.png",
+	"src": "http://localhost:8000/note512.png",
 	"sizes": "512x512",
 	"type": "image/png"
       }
