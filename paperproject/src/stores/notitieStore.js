@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import { th } from 'vuetify/locale';
+import {defineStore} from "pinia";
 
-let url = 'http://192.168.0.181:8000'
+let url = 'http://localhost:8000'
 //let url = 'https://backend.localhost'
 export const notitieStore = defineStore('notitieStore', {
   state: () => ({
@@ -18,7 +18,7 @@ export const notitieStore = defineStore('notitieStore', {
       }
       this.notes.notes.push(newNote);
       await axios.post(`${url}/notes`,this.notes)
-      await this.retrieveAllNotes()
+      //await this.retrieveAllNotes()
 
     },
     async retrieveAllNotes() {
@@ -27,7 +27,7 @@ export const notitieStore = defineStore('notitieStore', {
     },
     async deleteNote(id){
       console.log(id)
-      
+
       this.notes.notes.forEach(
         (note) =>{
         if(note.id == id){
@@ -44,7 +44,7 @@ export const notitieStore = defineStore('notitieStore', {
       //   }
       // }
       await axios.post(`${url}/notes`,this.notes)
-      this.retrieveAllNotes();
+      //this.retrieveAllNotes();
 
     }
   }
