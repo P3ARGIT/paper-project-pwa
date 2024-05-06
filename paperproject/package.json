@@ -11,7 +11,6 @@
     "@mdi/font": "7.0.96",
     "axios": "^1.6.7",
     "core-js": "^3.34.0",
-    "n": "^9.2.3",
     "roboto-fontface": "*",
     "vite-plugin-vuetify": "^2.0.2",
     "vue": "^3.4.0",

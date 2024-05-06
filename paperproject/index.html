@@ -12,6 +12,14 @@
 <body>
   <div id="app"></div>
   <script type="module" src="/src/main.js"></script>
+  <script>
+      // Let's register our serviceworker
+      navigator.serviceWorker.register('sw.js', {
+          // The scope cannot be parent to the script url
+          scope: './'
+      });
+  </script>
+  <script src="logging.js"></script>
 </body>
 
 </html>
