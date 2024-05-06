@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { th } from 'vuetify/locale';
 import {defineStore} from "pinia";
 
 let url = 'http://localhost:8000'
@@ -18,7 +17,7 @@ export const notitieStore = defineStore('notitieStore', {
       }
       this.notes.notes.push(newNote);
       await axios.post(`${url}/notes`,this.notes)
-      await this.retrieveAllNotes()
+      //await this.retrieveAllNotes()
 
     },
     async retrieveAllNotes() {
@@ -36,7 +35,7 @@ export const notitieStore = defineStore('notitieStore', {
         }
       )
       await axios.post(`${url}/notes`,this.notes)
-      this.retrieveAllNotes();
+      //this.retrieveAllNotes();
 
     }
   }
