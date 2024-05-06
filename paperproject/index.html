@@ -13,9 +13,15 @@
   <div id="app"></div>
   <script type="module" src="/src/main.js"></script>
   <script>
-      // Let's register our serviceworker
+      window.addEventListener("online",()=>{
+          navigator.serviceWorker.ready.then((registration) => {
+              console.log("online  index")
+              registration.active.postMessage(
+                  "online"
+              );
+          });
+      });
       navigator.serviceWorker.register('sw.js', {
-          // The scope cannot be parent to the script url
           scope: './'
       });
   </script>
