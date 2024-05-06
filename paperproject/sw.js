@@ -5,6 +5,7 @@
 // Here comes the install event!
 // This only happens once, when the browser sees this
 // version of the ServiceWorker for the first time.
+let notes;
 self.addEventListener('install', function(event) {
   // We pass a promise to event.waitUntil to signal how
   // long install takes, and if it failed
@@ -25,10 +26,16 @@ self.addEventListener('install', function(event) {
 // ServiceWorker's scope, and any request made within that
 // page
 self.addEventListener('fetch', function(event) {
+  if (/notes/.test(event.request.url)) {
+    console.log(event.request.method == "GET")
+    //event.respondWith(fetch('trollface.svg'));
+    //return;
+  }
   // Calling event.respondWith means we're in charge
   // of providing the response. We pass in a promise
   // that resolves with a response object
   event.respondWith(
+
     // First we look for something in the caches that
     // matches the request
     caches.match(event.request).then(function(response) {
